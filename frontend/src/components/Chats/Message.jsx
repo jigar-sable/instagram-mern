@@ -1,4 +1,3 @@
-import { BASE_PROFILE_IMAGE_URL } from '../../utils/constants'
 
 const Message = ({ ownMsg, avatar, content }) => {
     return (
@@ -10,12 +9,12 @@ const Message = ({ ownMsg, avatar, content }) => {
             :
             content === '❤️' ?
                 <div className="flex items-end gap-2 max-w-xs">
-                    <img draggable="false" className="w-7 h-7 rounded-full object-cover" src={BASE_PROFILE_IMAGE_URL + avatar} alt="avatar" />
+                    <img draggable="false" className="w-7 h-7 rounded-full object-cover" src={avatar} alt="avatar" />
                     <span className="items-end text-4xl">{content}</span>
                 </div>
                 :
                 <div className="flex items-end gap-2 max-w-xs">
-                    <img draggable="false" className="w-7 h-7 rounded-full object-cover" src={BASE_PROFILE_IMAGE_URL + avatar} alt="avatar" />
+                    <img draggable="false" className="w-7 h-7 rounded-full object-cover" src={avatar} alt="avatar" />
                     <span className="px-4 py-3 text-sm bg-gray-200 rounded-3xl max-w-xs overflow-hidden">{content}</span>
                 </div>
     )

@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import { clearErrors, loadUser, updateProfile } from '../../../actions/userAction';
 import profile from '../../../assests/images/hero.png';
 import { UPDATE_PROFILE_RESET } from '../../../constants/userConstants';
-import { BASE_PROFILE_IMAGE_URL } from '../../../utils/constants';
 import MetaData from '../../Layouts/MetaData';
 
 const UpdateProfile = () => {
@@ -92,7 +91,7 @@ const UpdateProfile = () => {
             >
                 <div className="flex items-center gap-8 ml-20">
                     <div className="w-11 h-11">
-                        <img draggable="false" className="w-full h-full rounded-full border object-cover" src={avatarPreview ? avatarPreview : BASE_PROFILE_IMAGE_URL + oldAvatar} alt="avatar" />
+                        <img draggable="false" className="w-full h-full rounded-full border object-cover" src={avatarPreview ? avatarPreview : oldAvatar} alt="avatar" />
                     </div>
                     <div className="flex flex-col gap-0">
                         <span className="text-xl">{username}</span>

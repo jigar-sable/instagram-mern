@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { followUser } from '../../actions/userAction'
-import { BASE_PROFILE_IMAGE_URL } from '../../utils/constants'
 
 const UserListItem = ({ _id, avatar, username, name, followers }) => {
 
@@ -20,7 +19,7 @@ const UserListItem = ({ _id, avatar, username, name, followers }) => {
     return (
         <div className="flex justify-between items-center mb-3">
             <div className="flex space-x-3 items-center">
-                <Link to={`/${username}`}><img draggable="false" loading="lazy" className="w-10 h-10 rounded-full object-cover" src={BASE_PROFILE_IMAGE_URL + avatar} alt="" /></Link>
+                <Link to={`/${username}`}><img draggable="false" loading="lazy" className="w-10 h-10 rounded-full object-cover" src={avatar} alt="" /></Link>
                 <div className="flex flex-col">
                     <Link to={`/${username}`} className="text-black text-sm font-semibold hover:underline">{username}</Link>
                     <span className="text-gray-400 text-sm">{name}</span>

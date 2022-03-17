@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import PostContainer from './Posts/PostContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { BASE_PROFILE_IMAGE_URL } from '../../utils/constants';
 import { clearErrors, followUser, getUserDetails } from '../../actions/userAction';
 import { clearErrors as clearChatErrors, addNewChat } from '../../actions/chatAction';
 import { toast } from 'react-toastify';
@@ -107,7 +106,7 @@ const Profile = () => {
 
                         {/* profile picture */}
                         <div className="sm:w-1/3 flex justify-center mx-auto sm:mx-0">
-                            <img draggable="false" className="w-40 h-40 rounded-full object-cover" src={BASE_PROFILE_IMAGE_URL + user.avatar} alt="" />
+                            <img draggable="false" className="w-40 h-40 rounded-full object-cover" src={user.avatar} alt="" />
                         </div>
 
                         {/* profile details */}

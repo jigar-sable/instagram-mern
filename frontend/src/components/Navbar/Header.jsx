@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom';
 import ProfileDetails from './ProfileDetails';
 import NewPost from './NewPost';
 import { useSelector } from 'react-redux';
-import { BASE_PROFILE_IMAGE_URL } from '../../utils/constants';
 import SearchBox from './SearchBar/SearchBox';
 import { ClickAwayListener } from '@mui/material';
 
@@ -45,7 +44,7 @@ const Header = () => {
                     <span className="hidden sm:block">{exploreOutline}</span>
                     <span className="hidden sm:block">{likeOutline}</span>
 
-                    <div onClick={() => setProfileToggle(!profileToggle)} className={`${profileToggle && 'border-black border' || (!onHome && !onChat) && 'border-black border'} rounded-full cursor-pointer h-7 w-7 p-[0.5px]`}><img draggable="false" loading="lazy" className="w-full h-full rounded-full object-cover" src={BASE_PROFILE_IMAGE_URL + user.avatar} alt="" /></div>
+                    <div onClick={() => setProfileToggle(!profileToggle)} className={`${profileToggle && 'border-black border' || (!onHome && !onChat) && 'border-black border'} rounded-full cursor-pointer h-7 w-7 p-[0.5px]`}><img draggable="false" loading="lazy" className="w-full h-full rounded-full object-cover" src={user.avatar} alt="" /></div>
                 </div>
 
                 {profileToggle &&

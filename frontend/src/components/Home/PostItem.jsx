@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addComment, likePost, savePost } from '../../actions/postAction';
-import { BASE_POST_IMAGE_URL, BASE_PROFILE_IMAGE_URL } from '../../utils/constants'
 import { likeFill } from '../Navbar/SvgIcons';
 import { commentIcon, emojiIcon, likeIconOutline, moreIcons, saveIconFill, saveIconOutline, shareIcon } from './SvgIcons'
 import { Picker } from 'emoji-mart'
@@ -82,7 +81,7 @@ const PostItem = ({ _id, caption, likes, comments, image, postedBy, savedBy, cre
 
             <div className="flex justify-between px-3 py-2.5 border-b items-center">
                 <div className="flex space-x-3 items-center">
-                    <Link to={`/${postedBy.username}`}><img draggable="false" className="w-10 h-10 rounded-full object-cover" src={BASE_PROFILE_IMAGE_URL + postedBy.avatar} alt="avatar" /></Link>
+                    <Link to={`/${postedBy.username}`}><img draggable="false" className="w-10 h-10 rounded-full object-cover" src={postedBy.avatar} alt="avatar" /></Link>
                     <Link to={`/${postedBy.username}`} className="text-black text-sm font-semibold">{postedBy.username}</Link>
                 </div>
                 <span className="cursor-pointer">{moreIcons}</span>
@@ -90,7 +89,7 @@ const PostItem = ({ _id, caption, likes, comments, image, postedBy, savedBy, cre
 
             {/* post image container */}
             <div className="relative flex items-center justify-center" onDoubleClick={setLike}>
-                <img draggable="false" loading="lazy" className="w-full h-full object-cover object-center" src={BASE_POST_IMAGE_URL + image} alt="post image" />
+                <img draggable="false" loading="lazy" className="w-full h-full object-cover object-center" src={image} alt="post image" />
                 {likeEffect &&
                     <img draggable="false" height="80px" className="likeEffect" alt="heart" src="https://img.icons8.com/ios-filled/2x/ffffff/like.png" />
                 }
@@ -138,7 +137,7 @@ const PostItem = ({ _id, caption, likes, comments, image, postedBy, savedBy, cre
                     <ScrollToBottom className="w-full h-52 overflow-y-auto py-1">
                         {allComments.map((c) => (
                             <div className="flex items-start mb-2 space-x-2" key={c._id}>
-                                <img draggable="false" className="h-7 w-7 rounded-full object-cover mr-0.5" src={BASE_PROFILE_IMAGE_URL + c.user.avatar} alt="avatar" />
+                                <img draggable="false" className="h-7 w-7 rounded-full object-cover mr-0.5" src={c.user.avatar} alt="avatar" />
                                 <Link to={`/${c.user}`} className="text-sm font-semibold hover:underline">{c.user.username}</Link>
                                 <p className="text-sm">{c.comment}</p>
                             </div>

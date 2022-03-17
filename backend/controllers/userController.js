@@ -4,7 +4,7 @@ const sendCookie = require('../utils/sendCookie');
 const ErrorHandler = require('../utils/errorHandler');
 const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
-const deleteFile = require('../utils/deleteFile');
+const { deleteFile } = require('../utils/awsFunctions');
 
 // Signup User
 exports.signupUser = catchAsync(async (req, res, next) => {
@@ -26,7 +26,7 @@ exports.signupUser = catchAsync(async (req, res, next) => {
         email,
         username,
         password,
-        avatar: req.file.filename
+        avatar: req.file.location
     })
 
     sendCookie(newUser, 201, res);
@@ -185,8 +185,8 @@ exports.updateProfile = catchAsync(async (req, res, next) => {
     if (req.body.avatar !== "") {
         const user = await User.findById(req.user._id);
 
-        await deleteFile('profiles/', user.avatar);
-        newUserData.avatar = req.file.filename
+        await deleteFile(user.avatar);
+        newUserData.avatar = req.file.location
     }
 
     await User.findByIdAndUpdate(req.user._id, newUserData, {
@@ -199,7 +199,6 @@ exports.updateProfile = catchAsync(async (req, res, next) => {
         success: true,
     });
 });
-
 
 // Delete Profile ⚠️⚠️
 exports.deleteProfile = catchAsync(async (req, res, next) => {
