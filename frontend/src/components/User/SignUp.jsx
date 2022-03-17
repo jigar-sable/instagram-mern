@@ -30,7 +30,7 @@ const SignUp = () => {
     const handleRegister = (e) => {
         e.preventDefault();
 
-        const userCheck = /^[a-z0-9_.-]{6,16}$/igm;
+        const userCheck = /^[a-z0-9_.-]{6,25}$/igm;
 
         if (password.length < 8) {
             toast.error("Password length must be atleast 8 characters");
