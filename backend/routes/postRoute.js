@@ -8,9 +8,6 @@ const router = express();
 router.route("/post/new").post(isAuthenticated, uploadPost.single('post'), newPost);
 
 router.route("/posts/all").get(allPosts);
-router.route("/testaws").post(uploadPost.single("post"), async (req, res) => {
-    console.log(req.file)
-});
 
 router.route("/posts").get(isAuthenticated, getPostsOfFollowing);
 
