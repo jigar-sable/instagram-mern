@@ -53,7 +53,7 @@ const UpdatePassword = () => {
 
             <form onSubmit={handlePasswordUpdate} className="flex flex-col gap-4 py-8 px-16 sm:w-3/4">
                 <div className="flex items-center gap-8 ml-24">
-                    <img draggable="false" className="w-11 h-11 rounded-full border object-cover" src={user.avatar} alt="" />
+                    <img draggable="false" className="w-11 h-11 rounded-full border object-cover" src={user.avatar.url} alt="" />
                     <span className="text-2xl">{user.username}</span>
                 </div>
                 <div className="flex w-full gap-8 text-right items-center">

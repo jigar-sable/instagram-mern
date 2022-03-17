@@ -107,7 +107,7 @@ const NewPost = ({ newPost, setNewPost }) => {
                     <div className="flex flex-col border-l sm:h-[80vh] w-full bg-white">
 
                         <div className="flex gap-3 px-3 py-2 items-center">
-                            <img draggable="false" className="w-11 h-11 rounded-full object-cover" src={profile} alt="avatar" />
+                            <img draggable="false" className="w-11 h-11 rounded-full object-cover" src={user.avatar.url} alt="avatar" />
                             <span className="text-black text-sm font-semibold">{user.username}</span>
                         </div>
 

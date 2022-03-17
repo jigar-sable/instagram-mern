@@ -21,7 +21,7 @@ const UpdateProfile = () => {
     const [website, setWebsite] = useState("");
     const [bio, setBio] = useState("");
     const [email, setEmail] = useState("");
-    const [oldAvatar, setOldAvatar] = useState("");
+    const [oldAvatar, setOldAvatar] = useState({});
     const [avatar, setAvatar] = useState("");
     const [avatarPreview, setAvatarPreview] = useState("");
 
@@ -92,7 +92,7 @@ const UpdateProfile = () => {
             >
                 <div className="flex items-center gap-8 ml-20">
                     <div className="w-11 h-11">
-                        <img draggable="false" className="w-full h-full rounded-full border object-cover" src={avatarPreview ? avatarPreview : oldAvatar} alt="avatar" />
+                        <img draggable="false" className="w-full h-full rounded-full border object-cover" src={avatarPreview ? avatarPreview : oldAvatar?.url} alt="avatar" />
                     </div>
                     <div className="flex flex-col gap-0">
                         <span className="text-xl">{username}</span>

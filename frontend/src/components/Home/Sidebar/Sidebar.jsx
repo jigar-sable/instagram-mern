@@ -48,7 +48,7 @@ const Sidebar = () => {
                 {/* <!-- self profile card --> */}
                 <div className="flex justify-between items-center">
                     <div className="flex flex-auto space-x-4 items-center">
-                        <Link to={`/${user.username}`}><img draggable="false" className="w-14 h-14 rounded-full object-cover" src={user.avatar} alt={user.name} /></Link>
+                        <Link to={`/${user.username}`}><img draggable="false" className="w-14 h-14 rounded-full object-cover" src={user.avatar.url} alt={user.name} /></Link>
                         <div className="flex flex-col">
                             <Link to={`/${user.username}`} className="text-black text-sm font-semibold">{user.username}</Link>
                             <span className="text-gray-400 text-sm">{user.name}</span>

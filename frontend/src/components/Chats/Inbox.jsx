@@ -185,7 +185,7 @@ const Inbox = () => {
                             <div className="flex py-3 px-6 border-b items-center justify-between">
                                 <div className="flex gap-2 items-center">
                                     <div className="w-8 h-8 relative">
-                                        <img draggable="false" loading="lazy" className="w-full h-full rounded-full object-cover" src={friend.avatar} alt="avatar" />
+                                        <img draggable="false" loading="lazy" className="w-full h-full rounded-full object-cover" src={friend.avatar?.url} alt="avatar" />
                                         {isOnline && <div className="absolute -right-0.5 -bottom-0.5 h-3 w-3 bg-green-500 rounded-full"></div>}
                                     </div>
                                     <span className="font-medium cursor-pointer">{friend.name}</span>
@@ -206,7 +206,7 @@ const Inbox = () => {
                                 {isTyping &&
                                     <>
                                         <div className="flex items-center gap-3 max-w-xs">
-                                            <img draggable="false" loading="lazy" className="w-7 h-7 rounded-full object-cover" src={friend.avatar} alt="avatar" />
+                                            <img draggable="false" loading="lazy" className="w-7 h-7 rounded-full object-cover" src={friend.avatar.url} alt="avatar" />
                                             <span className="text-sm text-gray-500">typing...</span>
                                         </div>
                                         <div ref={scrollRef}></div>
