@@ -158,7 +158,7 @@ exports.getPostsOfFollowing = catchAsync(async (req, res, next) => {
         populate: {
             path: 'user'
         }
-    }).sort({ $natural: -1 }).limit(4).skip(skipPosts)
+    }).sort({ createdAt: -1 }).limit(4).skip(skipPosts)
 
     return res.status(200).json({
         success: true,

@@ -114,7 +114,7 @@ const PostItem = ({ _id, caption, likes, comments, image, postedBy, savedBy, cre
                 {/* comment */}
                 <div className="flex flex-auto items-center space-x-1">
                     <Link to={`/${postedBy.username}`} className="text-sm font-semibold hover:underline">{postedBy.username}</Link>
-                    <span className="text-sm">{caption}</span>
+                    <span className="text-sm truncate">{caption}</span>
                 </div>
 
                 {/* time */}
