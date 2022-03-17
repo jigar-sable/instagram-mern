@@ -73,7 +73,7 @@ const PostItem = ({ _id, caption, likes, comments, image, postedBy, savedBy, cre
 
     return (
         <>
-            <div onClick={() => setOpen(true)} className="group w-full h-32 sm:h-72 max-h-72 flex justify-center items-center bg-black cursor-pointer relative z-0">
+            <div onClick={() => setOpen(true)} className="group w-full h-32 sm:h-72 max-h-72 flex justify-center items-center bg-gray-100 hover:bg-black cursor-pointer relative z-0">
                 <img draggable="false" loading="lazy" className="hover:opacity-75 group-hover:opacity-75 cursor-pointer object-cover h-full w-full" src={image} alt="Post" />
                 <div className="hidden group-hover:flex text-white absolute pointer-events-none gap-4">
                     <span><FavoriteIcon /> {likes.length}</span>
@@ -119,7 +119,7 @@ const PostItem = ({ _id, caption, likes, comments, image, postedBy, savedBy, cre
                                 <Link to={`/${postedBy.username}`} className="w-12"><img draggable="false" className="w-9 h-9 rounded-full object-cover" src={postedBy.avatar} alt="avatar" /></Link>
                                 <Link to={`/${postedBy.username}`} className="text-sm font-semibold hover:underline mr-2">{postedBy.username}</Link>
                             </div>
-                            <p className="text-sm whitespace-pre-line ml-12 -mt-4">{caption}</p>
+                            <p className="text-sm whitespace-pre-line ml-12 -mt-4 mb-3.5">{caption}</p>
 
                             {comments.map((c) => (
                                 <div className="flex items-start space-x-1 mb-3" key={c._id}>

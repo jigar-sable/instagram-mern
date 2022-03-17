@@ -210,6 +210,8 @@ exports.deleteProfile = catchAsync(async (req, res, next) => {
     const following = user.following;
     const userId = user._id;
 
+    // delete post & user images ⚠️⚠️
+
     await user.remove();
 
     res.cookie('token', null, {
