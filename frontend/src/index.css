@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #fafafa;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.slick-arrow {
+  margin: 0 2.3rem;
+  background-color: #ffffff;
+  z-index: 100;
+}
+
+.likeEffect {
+  position: absolute;
+  opacity: 0.7;
+  width: 6rem;
+  transform: scale(0);
+  animation: like 0.5s linear 1;
+}
+
+@keyframes like {
+  0% {
+    transform: scale(0.2);
+  }
+  25% {
+    transform: scale(0.6);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(0.4);
+  }
+}
