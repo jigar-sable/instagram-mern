@@ -110,8 +110,8 @@ const Profile = () => {
                         </div>
 
                         {/* profile details */}
-                        <div className="flex flex-col gap-6 min-w-[21.5rem] max-w-xl p-4 sm:p-1">
-                            <div className="flex items-center gap-2 justify-between">
+                        <div className="flex flex-col gap-6 p-4 sm:w-2/3 sm:p-1">
+                            <div className="flex items-center gap-8 sm:justify-start justify-between">
 
                                 <h2 className="text-2xl sm:text-3xl font-thin">{user.username}</h2>
                                 {(loggedInUser.username === user.username) ? (
@@ -129,19 +129,19 @@ const Profile = () => {
                                         ) : (
                                             <button onClick={handleFollow} className="font-medium bg-primary-blue text-sm text-white hover:shadow rounded px-6 py-1.5">Follow</button>
                                         )}
-                                        {metaballsMenu}
+                                        <span className="sm:block hidden">{metaballsMenu}</span>
                                     </div>
                                 )}
                             </div>
 
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-between items-center max-w-[21.5rem]">
                                 <div className="cursor-pointer"><span className="font-semibold">{user.posts?.length}</span> posts</div>
                                 <div onClick={handleFollowersModal} className="cursor-pointer"><span className="font-semibold">{user.followers?.length}</span> followers</div>
                                 <div onClick={handleFollowingModal} className="cursor-pointer"><span className="font-semibold">{user.following?.length}</span> following</div>
                             </div>
 
                             {/* bio */}
-                            <div>
+                            <div className="max-w-full">
                                 <p className="font-medium">{user.name}</p>
                                 <p className="whitespace-pre-line">{user.bio}</p>
                                 {user?.website &&

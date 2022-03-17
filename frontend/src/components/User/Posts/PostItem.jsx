@@ -96,7 +96,7 @@ const PostItem = ({ _id, caption, likes, comments, image, postedBy, savedBy, cre
                         {/* id with menu icon */}
                         <div className="flex justify-between px-3 py-2 border-b items-center">
                             {/* icon with name */}
-                            <div className="flex flex-auto space-x-3 items-center">
+                            <div className="flex space-x-3 items-center">
                                 <Link to={`/${postedBy.username}`}><img draggable="false" className="w-10 h-10 rounded-full object-cover" src={postedBy.avatar} alt="avatar" /></Link>
                                 <Link to={`/${postedBy.username}`} className="text-black text-sm font-semibold hover:underline">{postedBy.username}</Link>
                             </div>
@@ -115,14 +115,14 @@ const PostItem = ({ _id, caption, likes, comments, image, postedBy, savedBy, cre
                         {/* comments */}
                         <div className="p-4 w-full flex-1 max-h-[63vh] overscroll-x-hidden overflow-y-auto">
 
-                            <div className="flex flex-auto items-start space-x-1 mb-3.5">
-                                <Link to={`/${postedBy.username}`}><img draggable="false" className="w-9 h-9 rounded-full object-cover mr-2.5" src={postedBy.avatar} alt="avatar" /></Link>
-                                <Link to={`/${postedBy.username}`} className="text-sm font-semibold hover:underline">{postedBy.username}</Link>
-                                <p className="text-sm whitespace-pre-line">{caption}</p>
+                            <div className="flex items-start">
+                                <Link to={`/${postedBy.username}`} className="w-12"><img draggable="false" className="w-9 h-9 rounded-full object-cover" src={postedBy.avatar} alt="avatar" /></Link>
+                                <Link to={`/${postedBy.username}`} className="text-sm font-semibold hover:underline mr-2">{postedBy.username}</Link>
                             </div>
+                            <p className="text-sm whitespace-pre-line ml-12 -mt-4">{caption}</p>
 
                             {comments.map((c) => (
-                                <div className="flex flex-auto items-start space-x-1 mb-3" key={c._id}>
+                                <div className="flex items-start space-x-1 mb-3" key={c._id}>
                                     <Link to={`/${c.user}`}><img draggable="false" className="w-9 h-9 rounded-full object-cover mr-2.5" src={c.user.avatar} alt="avatar" /></Link>
                                     <Link to={`/${c.user}`} className="text-sm font-semibold hover:underline">{c.user.username}</Link>
                                     <p className="text-sm whitespace-pre-line">{c.comment}</p>
