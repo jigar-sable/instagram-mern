@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const Post = require('../models/postModel');
 const catchAsync = require('../middlewares/catchAsync');
 const sendCookie = require('../utils/sendCookie');
 const ErrorHandler = require('../utils/errorHandler');
@@ -229,6 +230,8 @@ exports.deleteProfile = catchAsync(async (req, res, next) => {
     const followers = user.followers;
     const following = user.following;
     const userId = user._id;
+
+    // delete post & user images ⚠️⚠️
 
     await user.remove();
 
