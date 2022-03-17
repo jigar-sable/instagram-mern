@@ -28,7 +28,7 @@ const UpdateProfile = () => {
     const handleUpdate = (e) => {
         e.preventDefault();
 
-        const userCheck = /^[a-z0-9_-]{6,16}$/igm;
+        const userCheck = /^[a-z0-9_.-]{6,25}$/igm;
 
         if (!userCheck.test(username)) {
             toast.error("Invalid Username");
