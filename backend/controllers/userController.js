@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const Post = require('../models/postModel');
 const catchAsync = require('../middlewares/catchAsync');
 const sendCookie = require('../utils/sendCookie');
 const ErrorHandler = require('../utils/errorHandler');
@@ -136,7 +137,7 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
 
     const users = await User.find();
 
-    const suggestedUsers = users.filter((u) => !u.followers.includes(req.user._id) && u._id.toString() !== req.user._id.toString()).slice(0, 5).reverse()
+    const suggestedUsers = users.filter((u) => !u.followers.includes(req.user._id) && u._id.toString() !== req.user._id.toString()).slice(-5)
 
     res.status(200).json({
         success: true,
