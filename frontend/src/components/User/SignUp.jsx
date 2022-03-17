@@ -61,13 +61,12 @@ const SignUp = () => {
 
             reader.onload = () => {
                 if (reader.readyState === 2) {
+                    setAvatar(reader.result);
                     setAvatarPreview(reader.result);
                 }
             };
 
             reader.readAsDataURL(e.target.files[0]);
-            // console.log(e.target.files[0])
-            setAvatar(e.target.files[0])
 
         } else {
             setUser({ ...user, [e.target.name]: e.target.value });

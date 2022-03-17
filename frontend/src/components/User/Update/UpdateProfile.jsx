@@ -49,13 +49,14 @@ const UpdateProfile = () => {
     const handleAvatarChange = (e) => {
         const reader = new FileReader();
         setAvatar("");
+        setAvatarPreview("");
         reader.onload = () => {
             if (reader.readyState === 2) {
                 setAvatarPreview(reader.result);
+                setAvatar(reader.result);
             }
         };
         reader.readAsDataURL(e.target.files[0]);
-        setAvatar(e.target.files[0]);
     }
 
     useEffect(() => {

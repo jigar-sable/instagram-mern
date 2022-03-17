@@ -4,10 +4,16 @@ const sendCookie = require('../utils/sendCookie');
 const ErrorHandler = require('../utils/errorHandler');
 const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
-const { deleteFile } = require('../utils/awsFunctions');
+const cloudinary = require('cloudinary');
 
 // Signup User
 exports.signupUser = catchAsync(async (req, res, next) => {
+
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+        folder: "instagram/avatars",
+        width: 150,
+        crop: "scale",
+    });
 
     const { name, email, username, password } = req.body;
 
@@ -26,7 +32,10 @@ exports.signupUser = catchAsync(async (req, res, next) => {
         email,
         username,
         password,
-        avatar: req.file.location
+        avatar: {
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url,
+        },
     })
 
     sendCookie(newUser, 201, res);
@@ -185,8 +194,20 @@ exports.updateProfile = catchAsync(async (req, res, next) => {
     if (req.body.avatar !== "") {
         const user = await User.findById(req.user._id);
 
-        await deleteFile(user.avatar);
-        newUserData.avatar = req.file.location
+        const imageId = user.avatar.public_id;
+
+        await cloudinary.v2.uploader.destroy(imageId);
+
+        const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+            folder: "instagram/avatars",
+            width: 150,
+            crop: "scale",
+        });
+
+        newUserData.avatar = {
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url,
+        }
     }
 
     await User.findByIdAndUpdate(req.user._id, newUserData, {

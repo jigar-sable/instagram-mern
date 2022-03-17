@@ -2,14 +2,21 @@ const Post = require('../models/postModel');
 const User = require('../models/userModel');
 const catchAsync = require('../middlewares/catchAsync');
 const ErrorHandler = require('../utils/errorHandler');
-const { deleteFile } = require('../utils/awsFunctions');
+const cloudinary = require('cloudinary');
 
 // Create New Post
 exports.newPost = catchAsync(async (req, res, next) => {
 
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.post, {
+        folder: "instagram/posts",
+    });
+
     const postData = {
         caption: req.body.caption,
-        image: req.file.location,
+        image: {
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url,
+        },
         postedBy: req.user._id
     }
 
@@ -69,7 +76,7 @@ exports.deletePost = catchAsync(async (req, res, next) => {
         return next(new ErrorHandler("Unauthorized", 401));
     }
 
-    await deleteFile(post.image);
+    await cloudinary.v2.uploader.destroy(post.image.public_id);
 
     await post.remove();
 

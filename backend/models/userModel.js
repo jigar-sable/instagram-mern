@@ -26,7 +26,12 @@ const userSchema = new mongoose.Schema({
         select: false,
     },
     avatar: {
-        type: String
+        public_id: {
+            type: String,
+        },
+        url: {
+            type: String,
+        }
     },
     bio: {
         type: String,
@@ -64,24 +69,24 @@ const userSchema = new mongoose.Schema({
     resetPasswordExpiry: Date,
 });
 
-userSchema.pre("save", async function(next) {
-    if(this.isModified("password")) {
+userSchema.pre("save", async function (next) {
+    if (this.isModified("password")) {
         this.password = await bcrypt.hash(this.password, 10);
     }
     next();
 });
 
-userSchema.methods.comparePassword = async function(enteredPassword) {
+userSchema.methods.comparePassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
 }
 
-userSchema.methods.generateToken = function() {
+userSchema.methods.generateToken = function () {
     return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRE
     });
 }
 
-userSchema.methods.getResetPasswordToken = async function() {
+userSchema.methods.getResetPasswordToken = async function () {
 
     const resetToken = crypto.randomBytes(20).toString("hex");
 

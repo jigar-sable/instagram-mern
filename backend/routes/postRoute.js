@@ -1,16 +1,12 @@
 const express = require('express');
 const { newPost, likeUnlikePost, deletePost, newComment, allPosts, getPostsOfFollowing, updateCaption, saveUnsavePost, getPostDetails } = require('../controllers/postController');
 const { isAuthenticated } = require('../middlewares/auth');
-const { uploadPost } = require('../utils/awsFunctions');
 
 const router = express();
 
-router.route("/post/new").post(isAuthenticated, uploadPost.single('post'), newPost);
+router.route("/post/new").post(isAuthenticated, newPost);
 
 router.route("/posts/all").get(allPosts);
-router.route("/testaws").post(uploadPost.single("post"), async (req, res) => {
-    console.log(req.file)
-});
 
 router.route("/posts").get(isAuthenticated, getPostsOfFollowing);
 

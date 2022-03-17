@@ -6,7 +6,12 @@ const postSchema = new mongoose.Schema({
         trim: true
     },
     image: {
-        type: String
+        public_id: {
+            type: String,
+        },
+        url: {
+            type: String,
+        }
     },
     postedBy: {
         type: mongoose.Schema.Types.ObjectId,
