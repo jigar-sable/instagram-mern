@@ -1,5 +1,5 @@
 const express = require('express');
-const { loginUser, signupUser, logoutUser, followUser, updateProfile, updatePassword, forgotPassword, resetPassword, getUserDetails, getAccountDetails, getAllUsers, searchUsers, getUserDetailsById } = require('../controllers/userController');
+const { loginUser, signupUser, logoutUser, followUser, updateProfile, updatePassword, forgotPassword, resetPassword, getUserDetails, getAccountDetails, getAllUsers, searchUsers, getUserDetailsById, deleteProfile } = require('../controllers/userController');
 const { isAuthenticated } = require('../middlewares/auth');
 const path = require('path');
 const multer = require('multer');
@@ -7,10 +7,10 @@ const multer = require('multer');
 const router = express();
 
 const avatarStorage = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, path.resolve(__dirname, '../../public/uploads/profiles'))
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
         cb(null, file.fieldname + '_' + uniqueSuffix + path.extname(file.originalname))
     }
@@ -25,7 +25,10 @@ router.route("/signup").post(avatarUpload.single('avatar'), signupUser);
 router.route("/login").post(loginUser);
 router.route("/logout").get(logoutUser);
 
-router.route("/me").get(isAuthenticated, getAccountDetails);
+router.route("/me")
+    .get(isAuthenticated, getAccountDetails)
+    .delete(isAuthenticated, deleteProfile);
+
 router.route("/user/:username").get(isAuthenticated, getUserDetails);
 router.route("/userdetails/:id").get(isAuthenticated, getUserDetailsById);
 

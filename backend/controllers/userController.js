@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const Post = require('../models/postModel');
 const catchAsync = require('../middlewares/catchAsync');
 const sendCookie = require('../utils/sendCookie');
 const ErrorHandler = require('../utils/errorHandler');
