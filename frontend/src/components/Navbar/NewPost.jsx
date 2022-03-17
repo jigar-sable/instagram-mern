@@ -1,11 +1,10 @@
-import { Dialog, DialogContent, LinearProgress } from '@mui/material'
+import { Dialog, LinearProgress } from '@mui/material'
 import { Picker } from 'emoji-mart';
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { addNewPost, clearErrors } from '../../actions/postAction';
-import profile from '../../assests/images/hero.png';
 import { NEW_POST_RESET } from '../../constants/postConstants';
 import { emojiIcon } from '../Home/SvgIcons';
 
@@ -107,7 +106,7 @@ const NewPost = ({ newPost, setNewPost }) => {
                     <div className="flex flex-col border-l sm:h-[80vh] w-full bg-white">
 
                         <div className="flex gap-3 px-3 py-2 items-center">
-                            <img draggable="false" className="w-11 h-11 rounded-full object-cover" src={profile} alt="avatar" />
+                            <img draggable="false" className="w-11 h-11 rounded-full object-cover" src={user.avatar} alt="avatar" />
                             <span className="text-black text-sm font-semibold">{user.username}</span>
                         </div>
 
