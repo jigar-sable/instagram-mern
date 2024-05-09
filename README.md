@@ -1,7 +1,7 @@
 # Instagram MERN
-Full-Stack Instgram Clone using MERN Stack and Socket.io
+Full-Stack Instagram Clone using MERN Stack and Socket.IO
 
-[Visit Now](https://instagramernstack.herokuapp.com/) 🚀
+[Visit Now](https://instagramweb-mern.vercel.app) 🚀
 
 ## 🖥️ Tech Stack
 **Frontend:**
@@ -27,42 +27,42 @@ Full-Stack Instgram Clone using MERN Stack and Socket.io
 
 ![aws-s3](https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
 
-**Deployed On:**
-
-![heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
-
 **Cloud Storage:** [Cloudinary](https://cloudinary.com/)
+
 **Mail Service:** [Sendgrid](https://sendgrid.com/)
 
 ## 🚀 Features
-- Login/Signup User Account
-- Login using Email/Username
-- Update Profile/Password User Account
-- Reset Password Mail using Sendgrid
-- Infinite Scroll Posts
-- Suggested Users
-- Search User Accounts by Name/Username
-- Follow/Unfollow Users
-- Like/Unlike Posts (Double Tap Like)
-- Comment on Post
-- Save/Unsave Post
-- Visit User Profiles
-- Share New Post
-- Skeleton Loaders
-- Delete Own Posts
-- Search Users to Chat
-- Add New Chat
-- Message Users
-- Typing | Online User Status
-- See Followers/Following of Users
-- Post Liked by Users
-- Emoji Enabled (Emoji Mart)
+**Authentication and User Management**
+- ✨ Secure Login/Signup Functionality
+- 🚪 Support for Email or Username-based Login
+- 🔐 Seamless Profile and Password Management
+- 🔄 Password Reset via Sendgrid Integration
 
-Branch [dev-v3-cloudinary](https://github.com/jigar-sable/instagram-mern/tree/dev-v3-cloudinary) uses Cloudinary to store images.
+**Content Management**
+- 📜 Dynamic Infinite Scroll for Posts
+- 🔍 Suggestions for User Connections
+- 🔎 Intuitive Search for Users by Name or Username
+- 🔗 Follow/Unfollow Capability for User Networking
+- ❤️ Like/Unlike Posts with Double-Tap Feature
+- 💬 Commenting on Posts for Interaction
+- 📌 Save/Unsave Posts for Bookmarking
+- 📤 Effortless Post-Sharing Functionality
 
-Branch [dev-v2-aws](https://github.com/jigar-sable/instagram-mern/tree/dev-v2-aws) uses AWS S3 to store images.
+**Messaging System**
+- 🔍 User-Friendly Search for Chat Participants
+- 📝 Seamless Creation of New Chats
+- 💬 Real-Time Messaging Between Users
+- 🕒 Status Indicators for Typing and Online Presence
 
-Branch [dev-v1](https://github.com/jigar-sable/instagram-mern/tree/dev-v1) uses local storage.
+**Social Features**
+- 📊 Comprehensive View of Followers/Following Lists
+- 👍 Post Liked By Users Tracking
+- 😄 Emoji Integration via Emoji Mart
+
+**Image Storage**
+- 📷 Branch [dev-v3-cloudinary](https://github.com/jigar-sable/instagram-mern/tree/dev-v3-cloudinary): Utilizes Cloudinary for Image Storage
+- ☁️ Branch [dev-v2-aws](https://github.com/jigar-sable/instagram-mern/tree/dev-v2-aws): Leverages AWS S3 for Image Storage
+- 💾 Branch [dev-v1](https://github.com/jigar-sable/instagram-mern/tree/dev-v1): Relies on Local Storage Solution
 
 ## Sneak Peek of Home Page 🙈 :
 ![home](https://user-images.githubusercontent.com/64949957/159116089-cfc2b4c5-dc7d-4d4b-a0c8-668f89ce5412.png)
@@ -80,11 +80,7 @@ Branch [dev-v1](https://github.com/jigar-sable/instagram-mern/tree/dev-v1) uses 
 
 <h2>📬 Contact</h2>
 
-If you want to contact me, you can reach me through below handles.
+Feel free to reach me through the below handles if you'd like to contact me.
 
-[![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jigar-sable)
-
-© 2022 Jigar Sable
-
-
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+[![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jigar-sablee)
+[![instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/jigarsable.dev)
