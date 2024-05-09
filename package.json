@@ -1,15 +1,11 @@
 {
   "name": "instagram",
   "version": "1.0.0",
-  "engines": {
-    "node": "v16.14.0",
-    "npm": "8.1.3"
-  },
   "description": "Full Stack Instagram Social Media App",
-  "main": "backend/server.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "nodemon backend/server.js",
-    "start": "node backend/server.js",
+    "dev": "nodemon server.js",
+    "start": "node server.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Jigar Sable",
