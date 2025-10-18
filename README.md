@@ -31,6 +31,53 @@ Full-Stack Instagram Clone using MERN Stack and Socket.IO
 
 **Mail Service:** [Sendgrid](https://sendgrid.com/)
 
+
+## ⚙️ How to Run the Project (Setup Instructions)
+
+Follow the steps below to get the project running locally 👇
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/jigar-sable/instagram-mern.git
+cd instagram-mern
+```
+### 2️⃣ Setup Backend
+```bash
+npm install
+```
+
+Before running the backend, go to:
+```bash
+backend/config/config.env.example
+```
+
+Rename this file to:
+config.env
+and update it with your environment variables (like MongoDB URI, JWT secret, etc.).
+
+Then start the backend server:
+```bash
+npm run dev
+```
+
+### 3️⃣ Setup Frontend
+From the root directory, navigate to the frontend folder:
+```bash
+cd frontend
+```
+
+Install dependencies:
+```bash
+npm install
+```
+
+Start the frontend server:
+```bash
+npm start
+```
+
+Now your app should be running successfully 🎉
+
 ## 🚀 Features
 **Authentication and User Management**
 - ✨ Secure Login/Signup Functionality
