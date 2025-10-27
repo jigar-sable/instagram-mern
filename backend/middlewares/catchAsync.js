@@ -1,3 +1,6 @@
-module.exports = errorFunction => (req, res, next) => {
-    Promise.resolve(errorFunction(req, res, next)).catch(next);
-}
+module.exports = (fn) => (req, res, next) => {
+  Promise.resolve(fn(req, res, next)).catch((err) => {
+    console.error("Controller error:", err); // <-- Add this line
+    next(err);
+  });
+};

@@ -66,6 +66,8 @@ const PostsContainer = () => {
         dispatch(getPostsOfFollowing(page));
     }
 
+    console.log("Posts from Redux:", posts);
+
     return (
         <>
             <div className="flex flex-col w-full lg:w-2/3 sm:mt-6 sm:px-8 mb-8">

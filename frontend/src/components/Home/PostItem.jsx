@@ -82,7 +82,7 @@ const PostItem = ({ _id, caption, likes, comments, image, postedBy, savedBy, cre
             <div className="flex justify-between px-3 py-2.5 border-b items-center">
                 <div className="flex space-x-3 items-center">
                     <Link to={`/${postedBy.username}`}><img draggable="false" className="w-10 h-10 rounded-full object-cover" src={postedBy.avatar} alt="avatar" /></Link>
-                    <Link to={`/${postedBy.username}`} className="text-black text-sm font-semibold">{postedBy.username}</Link>
+                    <Link to={`/${postedBy.username}`} className="text-black text-sm font-semibold">{postedBy && postedBy.username ? postedBy.username : "Unknown User"}</Link>
                 </div>
                 <span className="cursor-pointer">{moreIcons}</span>
             </div>

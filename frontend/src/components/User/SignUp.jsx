@@ -46,11 +46,11 @@ const SignUp = () => {
         }
 
         const formData = new FormData();
-        formData.set("email", email);
-        formData.set("name", name);
-        formData.set("username", username);
-        formData.set("password", password);
-        formData.set("avatar", avatar);
+        formData.append("avatar", avatar); // file should be a File object from input
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("username", username);
+        formData.append("password", password);
 
         dispatch(registerUser(formData));
     }
