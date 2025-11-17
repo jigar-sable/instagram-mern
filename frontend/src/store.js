@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { allUsersReducer, followUserReducer, forgotPasswordReducer, profileReducer, userDetailsReducer, userReducer } from './reducers/userReducer';
+import { allUsersReducer, deleteProfileReducer, followUserReducer, forgotPasswordReducer, profileReducer, userDetailsReducer, userReducer } from './reducers/userReducer';
 import { deletePostReducer, likePostReducer, newCommentReducer, newPostReducer, postDetailsReducer, postOfFollowingReducer, savePostReducer } from './reducers/postReducer';
 import { allChatsReducer, newChatReducer } from './reducers/chatsReducer';
 import { allMessagesReducer, newMessageReducer } from './reducers/messageReducer';
@@ -24,6 +24,7 @@ const reducer = combineReducers({
     allMessages: allMessagesReducer,
     newMessage: newMessageReducer,
     newChat: newChatReducer,
+    deleteProfile: deleteProfileReducer,
 });
 
 const store = createStore(

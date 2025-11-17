@@ -1,5 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteProfile } from '../../../actions/userAction';
+import { toast } from 'react-toastify';
+import { DELETE_PROFILE_RESET } from '../../../constants/userConstants';
 
 const tabs = [
     {
@@ -45,6 +49,36 @@ const tabs = [
 ]
 
 const Sidebar = ({ activeTab }) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
+    const { loading, error, success } = useSelector((state) => state.deleteProfile);
+    
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+    const handleDeleteProfile = () => {
+        setShowDeleteModal(true);
+    }
+
+    const confirmDeleteProfile = () => {
+        dispatch(deleteProfile());
+        setShowDeleteModal(false);
+    }
+
+    const cancelDeleteProfile = () => {
+        setShowDeleteModal(false);
+    }
+
+    if (error) {
+        toast.error(error);
+        dispatch({ type: DELETE_PROFILE_RESET });
+    }
+
+    if (success) {
+        toast.success("Profile deleted successfully");
+        dispatch({ type: DELETE_PROFILE_RESET });
+        navigate("/login");
+    }
 
     return (
         <div className="hidden sm:flex flex-col border-r w-1/4">
@@ -58,6 +92,47 @@ const Sidebar = ({ activeTab }) => {
                 <span className="text-primary-blue font-medium">Accounts Center</span>
                 <p className="text-xs text-gray-400">Control settings for connected experiences across Instagram, the Facebook app and Messenger, including story and post sharing and logging in.</p>
             </div>
+            
+            {/* Delete Profile Section */}
+            <div className="flex border-t mt-auto flex-col gap-2 p-6">
+                <button 
+                    onClick={handleDeleteProfile}
+                    className="text-red-600 font-medium hover:text-red-800 text-left"
+                >
+                    Delete Profile
+                </button>
+            </div>
+            
+            {/* Delete Confirmation Modal */}
+            {showDeleteModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white rounded-lg p-6 w-11/12 max-w-md">
+                        <h3 className="text-lg font-semibold mb-2">Delete Profile</h3>
+                        <p className="text-gray-600 mb-4">
+                            Are you sure you want to delete your profile? This action cannot be undone and all your data will be permanently removed.
+                        </p>
+                        <div className="flex justify-end gap-3">
+                            <button
+                                onClick={cancelDeleteProfile}
+                                className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+                                disabled={loading}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={confirmDeleteProfile}
+                                className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 flex items-center"
+                                disabled={loading}
+                            >
+                                {loading && (
+                                    <div className="w-4 h-4 border-t-2 border-white rounded-full animate-spin mr-2"></div>
+                                )}
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

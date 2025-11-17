@@ -24,27 +24,50 @@ const Header = () => {
     }, [location]);
 
     return (
-        <nav className="fixed top-0 w-full border-b bg-white z-10">
+        <nav className="fixed top-0 w-full border-b bg-white z-10" role="navigation" aria-label="Main navigation">
             {/* <!-- navbar container --> */}
             <div className="flex flex-row justify-between items-center py-2 px-3.5 sm:w-full sm:py-2 sm:px-4 md:w-full md:py-2 md:px-6 xl:w-4/6 xl:py-3 xl:px-8 mx-auto">
 
                 {/* <!-- logo --> */}
-                <Link to="/"><img draggable="false" className="mt-1.5 w-full h-full object-contain" src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="" /></Link>
+                <Link to="/"><img draggable="false" className="mt-1.5 w-full h-full object-contain" src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Instagram" /></Link>
 
                 <SearchBox />
 
                 {/* <!-- icons container  --> */}
                 <div className="flex items-center space-x-6 sm:mr-5">
-                    <Link to="/">{profileToggle || !onHome ? homeOutline : homeFill}</Link>
+                    <Link to="/" aria-label="Home">
+                        {profileToggle || !onHome ? homeOutline : homeFill}
+                    </Link>
 
-                    <Link to="/direct/inbox">{onChat ? messageFill : messageOutline}</Link>
+                    <Link to="/direct/inbox" aria-label="Messages">
+                        {onChat ? messageFill : messageOutline}
+                    </Link>
 
-                    <div onClick={() => setNewPost(true)} className="cursor-pointer">{postUploadOutline}</div>
+                    <button 
+                        onClick={() => setNewPost(true)} 
+                        className="cursor-pointer"
+                        aria-label="Create new post"
+                    >
+                        {postUploadOutline}
+                    </button>
 
-                    <span className="hidden sm:block">{exploreOutline}</span>
-                    <span className="hidden sm:block">{likeOutline}</span>
+                    <span className="hidden sm:block" aria-label="Explore" role="button" tabIndex="0">{exploreOutline}</span>
+                    <span className="hidden sm:block" aria-label="Notifications" role="button" tabIndex="0">{likeOutline}</span>
 
-                    <div onClick={() => setProfileToggle(!profileToggle)} className={`${profileToggle && 'border-black border' || (!onHome && !onChat) && 'border-black border'} rounded-full cursor-pointer h-7 w-7 p-[0.5px]`}><img draggable="false" loading="lazy" className="w-full h-full rounded-full object-cover" src={user.avatar} alt="" /></div>
+                    <button 
+                        onClick={() => setProfileToggle(!profileToggle)} 
+                        className={`${profileToggle && 'border-black border' || (!onHome && !onChat) && 'border-black border'} rounded-full cursor-pointer h-7 w-7 p-[0.5px]`}
+                        aria-label="Profile menu"
+                        aria-expanded={profileToggle}
+                    >
+                        <img 
+                            draggable="false" 
+                            loading="lazy" 
+                            className="w-full h-full rounded-full object-cover" 
+                            src={user.avatar} 
+                            alt={`${user.username}'s profile picture`} 
+                        />
+                    </button>
                 </div>
 
                 {profileToggle &&

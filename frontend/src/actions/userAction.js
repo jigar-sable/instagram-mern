@@ -302,6 +302,26 @@ export const updatePassword = (passwords) => async (dispatch) => {
 };
 
 // Clear All Errors
-export const clearErrors = () => async (dispatch) => {
+export const clearErrors = () => (dispatch) => {
     dispatch({ type: CLEAR_ERRORS });
-};
+}
+
+// Delete Profile
+export const deleteProfile = () => async (dispatch) => {
+    try {
+        dispatch({ type: DELETE_PROFILE_REQUEST });
+        
+        const { data } = await axios.delete(`/api/v1/me/delete`);
+        
+        dispatch({
+            type: DELETE_PROFILE_SUCCESS,
+            payload: data.message,
+        });
+        
+    } catch (error) {
+        dispatch({
+            type: DELETE_PROFILE_FAIL,
+            payload: error.response.data.message,
+        });
+    }
+}

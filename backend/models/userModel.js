@@ -35,6 +35,12 @@ const userSchema = new mongoose.Schema({
     website: {
         type: String,
         trim: true,
+        validate: {
+            validator: function(v) {
+                return !v || /^https?:\/\//.test(v);
+            },
+            message: props => `${props.value} is not a valid URL! Please include http:// or https://`
+        }
     },
     posts: [
         {

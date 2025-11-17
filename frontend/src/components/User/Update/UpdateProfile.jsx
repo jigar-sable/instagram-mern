@@ -35,6 +35,12 @@ const UpdateProfile = () => {
             return;
         }
 
+        // Validate website URL if provided
+        if (website && !/^https?:\/\//.test(website)) {
+            toast.error("Please include http:// or https:// in your website URL");
+            return;
+        }
+
         const formData = new FormData();
         formData.set("name", name);
         formData.set("username", username);
