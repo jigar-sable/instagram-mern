@@ -117,9 +117,11 @@ exports.newComment = catchAsync(async (req, res, next) => {
         return next(new ErrorHandler("Post Not Found", 404));
     }
 
-    if (post.comments.includes(req.user._id)) {
-        return next(new ErrorHandler("Already Commented", 500));
-    }
+    // Check if user has already commented (optional - remove if multiple comments per user are allowed)
+    // const hasCommented = post.comments.some(comment => comment.user.toString() === req.user._id.toString());
+    // if (hasCommented) {
+    //     return next(new ErrorHandler("Already Commented", 500));
+    // }
 
     post.comments.push({
         user: req.user._id,
